@@ -1,4 +1,5 @@
 #Project 1
+#Added Awesome thing
 by Hang Tran
 
 This app is a To-Do List. 
