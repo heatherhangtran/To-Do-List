@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.LinkedList;
 
@@ -39,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String input = mEditText.getText().toString();
+                Toast.makeText(MainActivity.this, "Click and hold on list to delete", Toast.LENGTH_LONG).show();
                 if (input.length() > 0) {
                     mStringList.add(input);
                     mAdapter.notifyDataSetChanged();
