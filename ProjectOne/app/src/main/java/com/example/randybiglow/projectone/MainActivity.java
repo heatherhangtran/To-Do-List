@@ -3,6 +3,7 @@ package com.example.randybiglow.projectone;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,6 +44,16 @@ public class MainActivity extends AppCompatActivity {
                     mAdapter.notifyDataSetChanged();
                     mEditText.setText("");
                 }
+            }
+        });
+
+        //Setting onItemLongClick code to remove list items.
+        listName.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                mStringList.remove(position);
+                mAdapter.notifyDataSetChanged();
+                return true;
             }
         });
     }
