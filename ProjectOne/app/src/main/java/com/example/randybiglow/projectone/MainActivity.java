@@ -3,6 +3,7 @@ package com.example.randybiglow.projectone;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -40,11 +41,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String input = mEditText.getText().toString();
-                Toast.makeText(MainActivity.this, "Click and hold on list to delete", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Hold to delete", Toast.LENGTH_LONG).show();
                 if (input.length() > 0) {
                     mStringList.add(input);
                     mAdapter.notifyDataSetChanged();
                     mEditText.setText("");
+                }
+
+                //THIS IS AWESOME! This will hide the key board after user click on the add button. *Happy Dance*
+                try {
+                    InputMethodManager arbitraryName = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                    arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+                }
+
+                catch (Exception e) {
                 }
             }
         });
