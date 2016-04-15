@@ -86,7 +86,6 @@ public class MainActivity extends AppCompatActivity {
         //Setting onItemLongClick code to remove list items.
         listName.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            //I am not sure why boolean is labeled in this method.
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 //What is clicked will be removed and not any other list.
                 mStringList.remove(position);
