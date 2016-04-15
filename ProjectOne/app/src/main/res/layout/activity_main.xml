@@ -57,6 +57,7 @@
         <!--android:clickable="true"-->
         <!--android:padding="5dp"-->
         <!--android:layout_alignParentLeft="true"/>-->
+    //Tried to incorporate checkboxes.
 
     <ListView
         android:layout_width="wrap_content"
