@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.LinkedList;
@@ -18,7 +19,8 @@ import java.util.LinkedList;
 public class Main2Activity extends AppCompatActivity {
     static LinkedList<String> m2StringList;
     static ArrayAdapter<String> m2Adapter;
-    static EditText m2EditText;
+    EditText m2EditText;
+    TextView m2TextView;
     static Button m2Button;
 
 
@@ -40,9 +42,12 @@ public class Main2Activity extends AppCompatActivity {
         list2Name.setAdapter(m2Adapter);
         m2EditText = (EditText) (findViewById(R.id.secondEditText));
         m2Button = (Button) (findViewById(R.id.secondButton));
+        m2TextView = (TextView) (findViewById(R.id.secondTextView));
 
         Intent oldIntent = getIntent();
         int data = oldIntent.getIntExtra("newList", 0);
+        String newText = oldIntent.getStringExtra("name");
+        m2TextView.setText(newText);
         Log.d("Main2", data + ""); //Still unsure as to how to read logs.
 
         m2Button.setOnClickListener(new View.OnClickListener() {

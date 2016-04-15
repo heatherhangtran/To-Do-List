@@ -16,7 +16,7 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
     LinkedList<String> mStringList;
-    static LinkedList<LinkedList<String>> mListList = new LinkedList<>();
+    //static LinkedList<LinkedList<String>> mListList = new LinkedList<>();
     ArrayAdapter<String> mAdapter;
     EditText mEditText;
     Button mButton;
@@ -76,6 +76,7 @@ public class MainActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent newIntent = new Intent(MainActivity.this, Main2Activity.class);
                 newIntent.putExtra("newList", position);
+                newIntent.putExtra("name", mStringList.get(position)); //Research mStringList.get(position).
                 startActivity(newIntent);
             }
         });
