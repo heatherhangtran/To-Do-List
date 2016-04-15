@@ -36,7 +36,7 @@
         android:layout_marginTop="10dp"
         android:background="@drawable/custom_edit_text"
         android:textCursorDrawable="@null"
-        android:textColor="#7fc4a7"/>
+        android:textColor="#ffffff"/>
 
     <Button
         android:layout_width="50dp"

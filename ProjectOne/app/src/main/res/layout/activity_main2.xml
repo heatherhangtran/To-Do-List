@@ -34,7 +34,8 @@
         android:textColorHint="#ffffff"
         android:gravity="center"
         android:layout_marginTop="10dp"
-        android:background="@drawable/custom_edit_text"/>
+        android:background="@drawable/custom_edit_text"
+        android:textColor="#ffffff"/>
 
     <Button
         android:layout_width="50dp"
