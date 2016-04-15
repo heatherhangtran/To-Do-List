@@ -17,18 +17,20 @@ import android.widget.Toast;
 import java.util.LinkedList;
 
 public class Main2Activity extends AppCompatActivity {
-    static LinkedList<String> m2StringList;
-    static ArrayAdapter<String> m2Adapter;
+
+    //I can use static here at any time, for now.
+    LinkedList<String> m2StringList;
+    ArrayAdapter<String> m2Adapter;
     EditText m2EditText;
     TextView m2TextView;
-    static Button m2Button;
+    Button m2Button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
-        //Add a default list of items.
+        //Add a default list of items for every list.
         m2StringList = new LinkedList<>();
         m2StringList.add("Item 1");
         m2StringList.add("Item 2");
@@ -42,11 +44,16 @@ public class Main2Activity extends AppCompatActivity {
         m2Button = (Button) (findViewById(R.id.secondButton));
         m2TextView = (TextView) (findViewById(R.id.secondTextView));
 
+        //The Intent is referenced from the first Activity.
         Intent oldIntent = getIntent();
+        //The data within the list of the first Activity are integers.
         int data = oldIntent.getIntExtra("newList", 0);
+        //The syntax: .get will retreive the information needed.
         String newText = oldIntent.getStringExtra("name");
+        //The new List will be named within the TextView the exact same way it was named in the Master List.
         m2TextView.setText(newText);
-        Log.d("Main2", data + ""); //Still unsure as to how to read logs.
+        //Making sure the intent connects the two activities.
+        Log.d("Main2", data + "");
 
         m2Button.setOnClickListener(new View.OnClickListener() {
             @Override

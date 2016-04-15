@@ -76,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     InputMethodManager arbitraryName = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+
+                  //e is a variable that is never used.
                 } catch (Exception e) {
                 }
             }
@@ -94,12 +96,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //Setting Item Click to allow user to reference Activity2, leading to another list.
         listName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //The intent here "put" or sends information to the second Activity.
                 Intent newIntent = new Intent(MainActivity.this, Main2Activity.class);
+                //The name and position below will be referenced by the second Activity.
                 newIntent.putExtra("newList", position);
-                newIntent.putExtra("name", mStringList.get(position)); //Research mStringList.get(position).
+                //The string here will allow for the second list to populate the name of the list on the new list.
+                newIntent.putExtra("name", mStringList.get(position));
+                //Starts the code above.
                 startActivity(newIntent);
             }
         });
