@@ -16,12 +16,12 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
     LinkedList<String> mStringList;
-    //static LinkedList<LinkedList<String>> mListList = new LinkedList<>();
+    //static LinkedList<LinkedList<String>> outer = new LinkedList<>();
+    //LinkedList<Integer> inner = new LinkedList<Integer>();
+
     ArrayAdapter<String> mAdapter;
     EditText mEditText;
     Button mButton;
-
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -10,7 +10,8 @@
     tools:context="com.example.randybiglow.projectone.Main2Activity"
     android:background="#d7f4e8"
     android:id="@+id/secondLayout"
-    >
+    android:focusable="true"
+    android:focusableInTouchMode="true">
 
     <TextView
         android:layout_width="match_parent"
