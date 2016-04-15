@@ -1,5 +1,6 @@
 package com.example.randybiglow.projectone;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -15,16 +16,19 @@ import java.util.LinkedList;
 
 public class MainActivity extends AppCompatActivity {
     LinkedList<String> mStringList;
+    static LinkedList<LinkedList<String>> mListList = new LinkedList<>();
     ArrayAdapter<String> mAdapter;
     EditText mEditText;
-    Button mAddButton;
+    Button mButton;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //Add a default list
+        //Add a default list of lists.
         mStringList = new LinkedList<>();
         mStringList.add("Pay bills");
         mStringList.add("Groceries");
@@ -32,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
         mAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, mStringList);
 
-        ListView listName = (ListView) (findViewById(R.id.masterListView));
+        final ListView listName = (ListView) (findViewById(R.id.masterListView));
         listName.setAdapter(mAdapter);
         mEditText = (EditText) (findViewById(R.id.masterEditText));
-        mAddButton = (Button) (findViewById(R.id.addButton));
+        mButton = (Button) (findViewById(R.id.masterButton));
 
-        mAddButton.setOnClickListener(new View.OnClickListener() {
+        mButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String input = mEditText.getText().toString();
@@ -50,11 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
                 //THIS IS AWESOME! This will hide the key board after user click on the add button. *Happy Dance*
                 try {
-                    InputMethodManager arbitraryName = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                    InputMethodManager arbitraryName = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-                }
-
-                catch (Exception e) {
+                } catch (Exception e) {
                 }
             }
         });
@@ -66,6 +68,15 @@ public class MainActivity extends AppCompatActivity {
                 mStringList.remove(position);
                 mAdapter.notifyDataSetChanged();
                 return true;
+            }
+        });
+
+        listName.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent newIntent = new Intent(MainActivity.this, Main2Activity.class);
+                newIntent.putExtra("newList", position);
+                startActivity(newIntent);
             }
         });
     }
