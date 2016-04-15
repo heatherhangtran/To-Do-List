@@ -45,8 +45,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String input = mEditText.getText().toString();
-                Toast.makeText(MainActivity.this, "Hold to delete", Toast.LENGTH_LONG).show();
-                if (input.length() > 0) {
+                if (input.length() == 0) {
+                    Toast.makeText(MainActivity.this, "Please enter text", Toast.LENGTH_SHORT).show();
+
+                }else {
+                    Toast.makeText(MainActivity.this, "Hold to delete", Toast.LENGTH_LONG).show();
                     mStringList.add(input);
                     mAdapter.notifyDataSetChanged();
                     mEditText.setText("");

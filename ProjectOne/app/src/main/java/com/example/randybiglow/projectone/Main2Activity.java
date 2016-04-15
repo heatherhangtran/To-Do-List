@@ -23,8 +23,6 @@ public class Main2Activity extends AppCompatActivity {
     TextView m2TextView;
     static Button m2Button;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,19 +52,21 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 String input = m2EditText.getText().toString();
-                Toast.makeText(Main2Activity.this, "Hold to delete", Toast.LENGTH_LONG).show();
-                if (input.length() > 0) {
+                if (input.length() == 0) {
+                    Toast.makeText(Main2Activity.this, "Please enter text", Toast.LENGTH_SHORT).show();
+
+                } else {
+                    Toast.makeText(Main2Activity.this, "Hold to delete", Toast.LENGTH_LONG).show();
                     m2StringList.add(input);
                     m2Adapter.notifyDataSetChanged();
                     m2EditText.setText("");
                 }
 
                 try {
-                    InputMethodManager arbitraryName = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                    InputMethodManager arbitraryName = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
                     arbitraryName.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-                }
 
-                catch (Exception e) {
+                } catch (Exception e) {
                 }
             }
         });
